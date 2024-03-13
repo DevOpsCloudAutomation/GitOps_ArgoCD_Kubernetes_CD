@@ -32,10 +32,10 @@ pipeline
                    git add Deployment.yaml
                    git commit -m "Updated Kubernetes Deployment File"
                 """
-
+                
                 withCredentials([gitUsernamePassword(credentialsId: 'Jenkins_ArgoCD_Token', gitToolName: 'Default')])
                 {
-                  sh "git push https://github.com/DevOpsCloudAutomation/Kubernetes_GitOps_ArgoCD main"
+                    sh "git push https://github.com/DevOpsCloudAutomation/Kubernetes_GitOps_ArgoCD.git main"
                 }
             }
         }
