@@ -33,7 +33,7 @@ pipeline
                    git commit -m "Updated Kubernetes Deployment File"
                 """
 
-                withCredentials([gitUsernamePassword(credentialsId: 'GitHub_Token', gitToolName: 'Default')])
+                withCredentials([gitUsernamePassword(credentialsId: 'Jenkins_ArgoCD_Token', gitToolName: 'Default')])
                 {
                   sh "git push https://github.com/DevOpsCloudAutomation/Kubernetes_GitOps_ArgoCD main"
                 }
