@@ -14,16 +14,27 @@ pipeline
         {
             steps()
             {
+                sh "cat Deployment.yaml"
                 sh "sed -i 's/Build_Tag/${Build_Number}/g' Deployment.yaml"
+                sh "cat Deployment.yaml"
             }
         }
 
-        stage('Deploy Application to EKS Kubernetes Cluster')
+        stage("Push the changed deployment file to Git")
         {
-            steps()
+            steps
             {
-                sh 'kubectl delete deployment webpage-deployment -n test || true'
-                sh 'kubectl apply -f Deployment.yaml'
+                sh """
+                   git config --global user.name "DevOpsCloudAutomation"
+                   git config --global user.email "Pavankumarkj347@Gmail.com"
+                   git add Deployment.yaml
+                   git commit -m "Updated Kubernetes Deployment File"
+                """
+
+                withCredentials([gitUsernamePassword(credentialsId: 'GitHub_Token', gitToolName: 'Default')])
+                {
+                  sh "git push https://github.com/DevOpsCloudAutomation/Kubernetes_GitOps_ArgoCD main"
+                }
             }
         }
     }
@@ -33,20 +44,6 @@ pipeline
         always
         {
             cleanWs()
-        }
-        
-        success
-        {
-            slackSend channel: 'awsdevopscloudautomation',
-            color: 'good',
-            message: "${currentBuild.currentResult} ✅\n Job Name: ${env.JOB_NAME} || Build Number: ${env.BUILD_NUMBER}\n Application is Successfully Deployed to Production Environment\n More Information Available at: ${env.BUILD_URL}"
-        }
-        
-        failure
-        {
-            slackSend channel: 'awsdevopscloudautomation',
-            color: 'good',
-            message: "${currentBuild.currentResult} ⛔️\n Job Name: ${env.JOB_NAME} || Build Number: ${env.BUILD_NUMBER}\n Application Deployment is Failed to Production Environment\n More Information Available at: ${env.BUILD_URL}"
         }
     }
 }
