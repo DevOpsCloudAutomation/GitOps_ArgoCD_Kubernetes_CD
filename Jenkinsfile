@@ -2,6 +2,11 @@ pipeline
 {
     agent any
 
+    environment
+    {
+        application_Name = "webapplication-argocd"
+    }
+
     stages
     {
         stage('Git Checkout')
@@ -17,7 +22,7 @@ pipeline
             steps()
             {
                 sh "cat Deployment.yaml"
-                sh "sed -i 's/Build_Tag/${buildNumber}/g' Deployment.yaml"
+                sh "sed -i 's/${application_Name}.*/${application_Name}:${buildNumber}/g' Deployment.yaml"
                 sh "cat Deployment.yaml"
             }
         }
