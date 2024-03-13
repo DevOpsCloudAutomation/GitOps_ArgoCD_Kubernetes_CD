@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: webpage-container
-        image: 236536187964.dkr.ecr.ap-south-1.amazonaws.com/webapplication-argocd:20
+        image: 236536187964.dkr.ecr.ap-south-1.amazonaws.com/webapplication-argocd:21
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
