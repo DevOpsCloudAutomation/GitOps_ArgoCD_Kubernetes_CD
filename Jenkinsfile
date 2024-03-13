@@ -1,7 +1,7 @@
 pipeline
 {
     agent any
-    
+
     stages
     {
         stage('Git Checkout')
@@ -17,7 +17,7 @@ pipeline
             steps()
             {
                 sh "cat Deployment.yaml"
-                sh "sed -i 's/Build_Tag/${Build_Number}/g' Deployment.yaml"
+                sh "sed -i 's/Build_Tag/${buildNumber}/g' Deployment.yaml"
                 sh "cat Deployment.yaml"
             }
         }
