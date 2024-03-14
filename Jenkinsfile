@@ -25,7 +25,7 @@ pipeline
             }
         }
 
-        stage("Push the changed deployment file to Git")
+        stage("Push Updated Kubernetes Deployment File to GitHub")
         {
             steps()
             {
