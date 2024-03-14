@@ -33,7 +33,7 @@ pipeline
                     git config --global user.name "DevOpsCloudAutomation"
                     git config --global user.email "Pavankumarkj347@gmail.com"
                     git add Deployment.yaml
-                    git commit -m "Updated Deployment Manifest"
+                    git commit -m "Updated Build Number in Deployment Manifest File"
                 """
                 
                 withCredentials([gitUsernamePassword(credentialsId: 'Jenkins_ArgoCD_Token', gitToolName: 'Git')])
