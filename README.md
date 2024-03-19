@@ -33,4 +33,4 @@
   git push https://github.com/DevOpsCloudAutomation/GitOps_ArgoCD_Kubernetes_CD main
 ```
 
-## Kubernetes Deployment Files are used to Deploy Application.
+## Kubernetes Deployment Files are used to Deploy Application into Kubernetes Cluster.
