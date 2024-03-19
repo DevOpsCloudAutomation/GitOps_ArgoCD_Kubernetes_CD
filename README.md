@@ -30,5 +30,7 @@
   git config --global user.email "Pavankumarkj347@gmail.com"
   git add Deployment.yaml
   git commit -m "Updated Build Number in Deployment Manifest File"
-  git push https://github.com/DevOpsCloudAutomation/Kubernetes_GitOps_ArgoCD main
+  git push https://github.com/DevOpsCloudAutomation/GitOps_ArgoCD_Kubernetes_CD main
 ```
+
+## Kubernetes Deployment Files are used to Deploy Application.

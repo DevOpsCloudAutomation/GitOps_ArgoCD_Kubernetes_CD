@@ -38,7 +38,7 @@ pipeline
                 
                 withCredentials([gitUsernamePassword(credentialsId: 'Jenkins_ArgoCD_Token', gitToolName: 'Git')])
                 {
-                    sh "git push https://github.com/DevOpsCloudAutomation/Kubernetes_GitOps_ArgoCD main"
+                    sh "git push https://github.com/DevOpsCloudAutomation/GitOps_ArgoCD_Kubernetes_CD main"
                 }
             }
         }
