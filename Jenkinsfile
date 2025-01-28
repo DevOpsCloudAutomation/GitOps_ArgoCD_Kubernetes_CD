@@ -13,7 +13,7 @@ pipeline
         {
             steps()
             {
-                git branch: 'main', url: 'https://github.com/DevOpsCloudAutomation/Kubernetes_GitOps_ArgoCD.git'
+                git branch: 'main', url: 'https://github.com/DevOpsCloudAutomation/GitOps_ArgoCD_Kubernetes_CD.git'
             }
         }
 
